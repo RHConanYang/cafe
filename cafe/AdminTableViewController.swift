@@ -104,6 +104,14 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
         textLabelName.text = order.name
         textLabelName.sizeToFit()
         
+        let textLabelIce = cell.viewWithTag(8) as! UILabel
+        textLabelIce.text = order.ice
+        textLabelIce.sizeToFit()
+        
+        let textLabelSugar = cell.viewWithTag(9) as! UILabel
+        textLabelSugar.text = order.sugar
+        textLabelSugar.sizeToFit()
+
         let textLabelPrice = cell.viewWithTag(3) as! UILabel
         textLabelPrice.text = String(describing: order.price!)
         textLabelPrice.sizeToFit()

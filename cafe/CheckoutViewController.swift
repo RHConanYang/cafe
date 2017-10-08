@@ -162,7 +162,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
     // Set placeholder in TextField
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if (textView.text == "在此處輸入您任何一杯飲料的甜度冰塊。") {
+        if (textView.text == "備註") {
             textView.text = ""
         }
         textView.becomeFirstResponder()
@@ -170,7 +170,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if (textView.text == "") {
-            textView.text = "在此處輸入您任何一杯飲料的甜度冰塊。"
+            textView.text = "備註"
         }
         textView.resignFirstResponder()
         
@@ -190,6 +190,8 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
         for i in 0 ..< dicListItems.count {
             if i == 0 {
                 let name = dicListItems[i].value(forKey: "name") as! String
+                let ice = dicListItems[i].value(forKey: "ice") as! String
+                let sugar = dicListItems[i].value(forKey: "sugar") as! String
                 let price = dicListItems[i].value(forKey: "roundPrice") as! Int
                 let qty = dicListItems[i].value(forKey: "qty") as! Int
                 let subtotal = qty * price
@@ -210,12 +212,16 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
                                             "uid": userID!,
                                             "subtotal": subtotal,
                                             "email": userEm!,
-                                            "timestemp": timestemp]
+                                            "timestemp": timestemp,
+                                            "ice": ice,
+                                            "sugar": sugar]
                 let dataabaseRef = Database.database().reference()
                 
                 dataabaseRef.child("order").childByAutoId().setValue(NPQ)
             }else{
                 let name = dicListItems[i].value(forKey: "name") as! String
+                let ice = dicListItems[i].value(forKey: "ice") as! String
+                let sugar = dicListItems[i].value(forKey: "sugar") as! String
                 let price = dicListItems[i].value(forKey: "roundPrice") as! Int
                 let qty = dicListItems[i].value(forKey: "qty") as! Int
                 let subtotal = qty * price
@@ -236,7 +242,9 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
                                             "uid": userID!,
                                             "subtotal": subtotal,
                                             "email": userEm!,
-                                            "timestemp": timestemp]
+                                            "timestemp": timestemp,
+                                            "ice": ice,
+                                            "sugar": sugar]
                 let dataabaseRef = Database.database().reference()
                 
                 dataabaseRef.child("order").childByAutoId().setValue(NPQ)

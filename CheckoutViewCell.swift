@@ -10,6 +10,8 @@ import UIKit
 
 class CheckoutViewCell: UITableViewCell {
     
+    @IBOutlet weak var sugarSel: UILabel!
+    @IBOutlet weak var iceSel: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQuantity: UILabel!
@@ -30,6 +32,9 @@ class CheckoutViewCell: UITableViewCell {
     func SetProductAttribute(_ item:Item){
         
         productName.text = item.name
+        sugarSel.text = item.sugar
+        iceSel.text = item.ice
+        
         
         let itemPrice = item.roundPrice as! Int
         let itemQty = item.qty as! Int

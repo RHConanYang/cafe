@@ -14,6 +14,8 @@ class ProductInfoViewController: UIViewController {
     // Managed Object Context - reference to Core Data / access to Core Data
     let moc = DataController().managedObjectContext;
     
+    @IBOutlet weak var sugarSeg: UISegmentedControl!
+    @IBOutlet weak var iceSeg: UISegmentedControl!
     @IBOutlet weak var prodactImage: UIImageView!
     @IBOutlet weak var prodactPrice: UILabel!
     @IBOutlet weak var prodactName: UILabel!
@@ -26,6 +28,8 @@ class ProductInfoViewController: UIViewController {
     var prodactData:[String]!
     var categoryName:String!
     var listItems = [NSManagedObject]()
+    var iceSel:String = ""
+    var sugarSel:String = ""
     
     override func viewDidLoad() {
         
@@ -146,6 +150,8 @@ class ProductInfoViewController: UIViewController {
             item.name = prodactName.text
             item.image = UIImagePNGRepresentation(prodactImage.image!)
             item.displayPrice = prodactPrice.text
+            item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
+            item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
             let roundPrice = prodactData[2]
             item.roundPrice = Int(roundPrice) as NSNumber?
             item.qty = 1
@@ -199,6 +205,8 @@ class ProductInfoViewController: UIViewController {
             item.name = prodactName.text;
             item.image = UIImagePNGRepresentation(prodactImage.image!);
             item.displayPrice = prodactPrice.text;
+            item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
+            item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
             let roundPrice = prodactData[2]
             item.roundPrice = Int(roundPrice) as NSNumber?
             item.qty = 1;

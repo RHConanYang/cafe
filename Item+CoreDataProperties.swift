@@ -16,5 +16,7 @@ extension Item {
     @NSManaged var name: String?
     @NSManaged var qty: NSNumber?
     @NSManaged var roundPrice: NSNumber?
-
+    @NSManaged var ice: String?
+    @NSManaged var sugar: String?
+    
 }

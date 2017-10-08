@@ -22,6 +22,8 @@ class OrderModel {
     var uEm: String?
     var autoId: String?
     var timestamp: NSNumber?
+    var ice: String?
+    var sugar: String?
     
     
     init(snapshot: DataSnapshot) {
@@ -30,6 +32,8 @@ class OrderModel {
         
         uid = data["uid"] as? String
         name = data["name"] as? String
+        ice = data["ice"] as? String
+        sugar = data["sugar"] as? String
         price = data["price"] as? Int
         qty =  data["qty"] as? Int
         text = data["text"] as? String
