@@ -161,7 +161,7 @@ class ProductInfoViewController: UIViewController {
         } else {
             
             let itemUpdate = listItems[indexPath] as! Item;
-            itemUpdate.qty = (Int(itemUpdate.qty!) + 1) as NSNumber
+            itemUpdate.qty = (Int(truncating: itemUpdate.qty!) + 1) as NSNumber
             
             do{
                 try moc.save();
@@ -222,7 +222,7 @@ class ProductInfoViewController: UIViewController {
         } else {
             
             let itemUpdate = listItems[indexPath] as! Item;
-            itemUpdate.qty = Int(itemUpdate.qty!) + 1 as NSNumber
+            itemUpdate.qty = Int(truncating: itemUpdate.qty!) + 1 as NSNumber
             
             do{
                 try moc.save();
@@ -247,12 +247,12 @@ class ProductInfoViewController: UIViewController {
         alertBox.isHidden=false
         UIView.animate(withDuration: 6, animations: {
             self.alertBox.alpha=0;//slow fade out
-        });
+        })
     }
     // Alert Box - Reset the variables
     func resetVariables(){
         alertBox.isHidden=true
-        self.alertBox.alpha=1;
+        self.alertBox.alpha=1
     }
     
     
