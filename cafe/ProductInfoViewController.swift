@@ -166,8 +166,19 @@ class ProductInfoViewController: UIViewController {
             
         } else {
             
-            let itemUpdate = listItems[indexPath] as! Item;
-            itemUpdate.qty = (Int(truncating: itemUpdate.qty!) + 1) as NSNumber
+//            let itemUpdate = listItems[indexPath] as! Item;
+//            itemUpdate.qty = (Int(truncating: itemUpdate.qty!) + 1) as NSNumber
+            
+            let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc)
+            let item = Item(entity: entityDescription!, insertInto: moc)
+            item.name = prodactName.text
+            item.image = UIImagePNGRepresentation(prodactImage.image!)
+            item.displayPrice = prodactPrice.text
+            item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
+            item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
+            let roundPrice = prodactData[2]
+            item.roundPrice = Int(roundPrice) as NSNumber?
+            item.qty = 1
             
             do{
                 try moc.save();
@@ -229,8 +240,19 @@ class ProductInfoViewController: UIViewController {
             //print("Alert show: \(alertBox.hidden)")
         } else {
             
-            let itemUpdate = listItems[indexPath] as! Item;
-            itemUpdate.qty = Int(truncating: itemUpdate.qty!) + 1 as NSNumber
+//            let itemUpdate = listItems[indexPath] as! Item;
+//            itemUpdate.qty = Int(truncating: itemUpdate.qty!) + 1 as NSNumber
+            
+            let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc);
+            let item = Item(entity: entityDescription!, insertInto: moc);
+            item.name = prodactName.text;
+            item.image = UIImagePNGRepresentation(prodactImage.image!);
+            item.displayPrice = prodactPrice.text;
+            item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
+            item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
+            let roundPrice = prodactData[2]
+            item.roundPrice = Int(roundPrice) as NSNumber?
+            item.qty = 1;
             
             do{
                 try moc.save();
