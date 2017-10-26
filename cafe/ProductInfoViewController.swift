@@ -89,6 +89,28 @@ class ProductInfoViewController: UIViewController {
             prodactData = data.flowertea[setTitle];
         case "😎 輕食系列":
             prodactData = data.food[setTitle];
+            
+            // if food
+            iceSeg.isHidden = true
+            sugarSeg.isHidden = true
+            
+//            iceSeg.insertSegment(withTitle:"  ", at: 0, animated: true)
+//            iceSeg.insertSegment(withTitle:"  ", at: 1, animated: true)
+//            iceSeg.insertSegment(withTitle:"  ", at: 2, animated: true)
+//            iceSeg.insertSegment(withTitle:"  ", at: 3, animated: true)
+//            iceSeg.insertSegment(withTitle:"  ", at: 4, animated: true)
+//            iceSeg.insertSegment(withTitle:"  ", at: 5, animated: true)
+            
+            //iceSeg.removeAllSegments()
+            
+            
+//            sugarSeg.insertSegment(withTitle: "  ", at: 0, animated: true)
+//            sugarSeg.insertSegment(withTitle: "  ", at: 1, animated: true)
+//            sugarSeg.insertSegment(withTitle: "  ", at: 2, animated: true)
+//            sugarSeg.insertSegment(withTitle: "  ", at: 3, animated: true)
+//            sugarSeg.insertSegment(withTitle: "  ", at: 4, animated: true)
+            
+            //sugarSeg.removeAllSegments()
         default:
             print("default case");
         }
@@ -98,10 +120,15 @@ class ProductInfoViewController: UIViewController {
         prodactImage.clipsToBounds = true
         
         // Prodact data
-        prodactName.text = setTitle;
-        prodactImage.image = UIImage(named: prodactData[0]);
-        prodactPrice.text = prodactData[1];
-        prodactDescription.text = prodactData[3];
+        prodactName.text = setTitle
+        prodactImage.image = UIImage(named: prodactData[0])
+        prodactPrice.text = prodactData[1]
+        prodactDescription.text = prodactData[3]
+        
+
+        
+        
+        
     }
     
     // Move to shopping cart screen
