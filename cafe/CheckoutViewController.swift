@@ -272,7 +272,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK:Button of post Order
     @IBAction func subOrder(_ sender: Any) {
         
-        let myAlert: UIAlertController = UIAlertController(title: "您確定要送出訂單了嗎？", message: "確認背著與甜度冰塊都沒有問題了嗎？", preferredStyle: .alert)
+        let myAlert: UIAlertController = UIAlertController(title: "您確定要送出訂單了嗎？", message: "確認備註與甜度冰塊都沒有問題了嗎？", preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "ok", style: .default, handler: {
             (action: UIAlertAction!) -> Void in
             self.post()
