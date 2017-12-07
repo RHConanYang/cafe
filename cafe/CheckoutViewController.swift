@@ -303,7 +303,17 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
             print("no")
         }
     }
-    
+    func logoutScreen() {
+        do {
+            try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "loginPage" ) as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }catch{
+            print(error)
+        }
+        
+    }
 
     
     // MARK:Button of post Order
@@ -314,6 +324,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
             (action: UIAlertAction!) -> Void in
             self.post()
             self.dele()
+            self.logoutScreen()
             
             
             //let storyboard = UIStoryboard(name: "Main", bundle: nil)

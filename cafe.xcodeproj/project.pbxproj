@@ -34,6 +34,7 @@
 		ECEA71081F2E0D7900D8F4CF /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEA71071F2E0D7900D8F4CF /* AdminTableViewController.swift */; };
 		ECEA712C1F2F1DB000D8F4CF /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEA712B1F2F1DB000D8F4CF /* GroupViewController.swift */; };
 		ECEA712E1F2F1E1D00D8F4CF /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEA712D1F2F1E1D00D8F4CF /* ExpandableHeaderView.swift */; };
+		ECF43FC51FD9555D007B2FB6 /* PositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF43FC41FD9555D007B2FB6 /* PositionViewController.swift */; };
 		ECF4A8FA1ED7F41800249CCE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF4A8F91ED7F41800249CCE /* MapKit.framework */; };
 		ECF4A8FC1ED7F68600249CCE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF4A8FB1ED7F68600249CCE /* MapViewController.swift */; };
 		ECF4A91C1EDFE3FC00249CCE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECF4A91B1EDFE3FC00249CCE /* GoogleService-Info.plist */; };
@@ -74,6 +75,7 @@
 		ECEA71071F2E0D7900D8F4CF /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		ECEA712B1F2F1DB000D8F4CF /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupViewController.swift; path = ../GroupViewController.swift; sourceTree = "<group>"; };
 		ECEA712D1F2F1E1D00D8F4CF /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		ECF43FC41FD9555D007B2FB6 /* PositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionViewController.swift; sourceTree = "<group>"; };
 		ECF4A8F91ED7F41800249CCE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ECF4A8FB1ED7F68600249CCE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		ECF4A91B1EDFE3FC00249CCE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				EC8E3FE01E8E13360032A404 /* ShoppingCartViewController.swift */,
 				EC8E400C1E8F58860032A404 /* CheckoutViewController.swift */,
 				ECEA71071F2E0D7900D8F4CF /* AdminTableViewController.swift */,
+				ECF43FC41FD9555D007B2FB6 /* PositionViewController.swift */,
 				EC0D28361EC56EA8002DB365 /* ShoppingCartCoreData.xcdatamodeld */,
 				EC8E3FE51E8E13360032A404 /* Assets.xcassets */,
 				EC8E3FE71E8E13360032A404 /* LaunchScreen.storyboard */,
@@ -339,6 +342,7 @@
 				EC8E3FF91E8E15710032A404 /* ProductViewCell.swift in Sources */,
 				EC0D283D1EC95266002DB365 /* WalktroughContentViewController.swift in Sources */,
 				EC8E3FFD1E8E159D0032A404 /* CheckoutViewCell.swift in Sources */,
+				ECF43FC51FD9555D007B2FB6 /* PositionViewController.swift in Sources */,
 				EC0D283A1EC56EA8002DB365 /* ShoppingCartCoreData.xcdatamodeld in Sources */,
 				ECEA712E1F2F1E1D00D8F4CF /* ExpandableHeaderView.swift in Sources */,
 				EC8E3FDF1E8E13360032A404 /* AppDelegate.swift in Sources */,
