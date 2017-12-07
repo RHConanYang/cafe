@@ -55,7 +55,29 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
         
         fetchOrders()
         
+        
+        
+        
+        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+//    func change()  {
+//
+//
+//        for i in 0 ..< orders.count {
+//            let converted = Date(timeIntervalSince1970: orders[i].timestamp! / 1000)
+//
+//            let datefor = DateFormatter()
+//            datefor.timeZone = TimeZone.current
+//            datefor.dateFormat = "hh:mm a"
+//            let time = datefor.string(from: converted)
+//
+//            orders[i].dater?.append(time)
+//
+//        }
+//    }
     
     func fetchOrders() {
         
@@ -88,6 +110,9 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
         
         return orders.count
     }
+    
+    
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,6 +157,31 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
         let texLabelTotal = cell.viewWithTag(7) as! UILabel
         texLabelTotal.text = order.total
         texLabelTotal.sizeToFit()
+        
+//        let converted = Date(timeIntervalSince1970: order.timestamp! / 1000)
+        let datefor = DateFormatter()
+        datefor.timeZone = NSTimeZone.local
+        datefor.dateFormat = "hh:mm a"
+        
+        
+        let texLabelTime = cell.viewWithTag(10) as! UILabel
+        texLabelTime.text = datefor.string(from: Date(timeIntervalSince1970: order.timestamp! / 1000))
+        texLabelTime.sizeToFit()
+        
+        
+        
+//        let converted = Date(timeIntervalSince1970: order.timestamp!)
+//
+//        let datefor = DateFormatter()
+//        datefor.timeZone = NSTimeZone.local
+//        datefor.timeStyle = .medium
+//        datefor.dateStyle = .long
+//        let time = datefor.string(from: converted)
+        
+//        let texLabelTime = cell.viewWithTag(10) as! UILabel
+//        texLabelTime.text = String(describing: time )
+//        texLabelTime.sizeToFit()
+        
         
         return cell
     }

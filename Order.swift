@@ -21,9 +21,10 @@ class OrderModel {
     var subtotal: Int?
     var uEm: String?
     var autoId: String?
-    var timestamp: NSNumber?
+    var timestamp: Double?
     var ice: String?
     var sugar: String?
+
     
     
     init(snapshot: DataSnapshot) {
@@ -40,7 +41,9 @@ class OrderModel {
         total = data["total"] as? String
         subtotal = data["subtotal"] as? Int
         uEm = data["email"] as? String
-        timestamp = data["timestamp"] as? NSNumber
+        timestamp = data["timestemp"] as? Double ?? 0
+
+        
         autoId = snapshot.key
     }
 }

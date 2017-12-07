@@ -80,10 +80,10 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
     
     // Go to Home screen
     @objc func homeScreen(){
@@ -265,6 +265,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
                 let text = ""
                 let totalPrice = ""
                 let timestemp = ServerValue.timestamp()
+                
                 
                 let user = Auth.auth().currentUser
                 let userID = user?.uid
