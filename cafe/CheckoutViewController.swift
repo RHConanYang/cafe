@@ -21,12 +21,14 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
 
 
     
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalCartAmount: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var checkOut: UIButton!
     
     var allProductsTotal: Int!
+//    var activeTextView : UITextView!
 
     
     
@@ -69,8 +71,18 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
         checkOut.layer.shadowOpacity = 0.5
         checkOut.layer.shadowOffset = CGSize(width: 0, height: 0)
         
+        textView.delegate = self
         
+//        let center: NotificationCenter = NotificationCenter.default
 
+//        center.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        center.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     // Go to Home screen
@@ -159,9 +171,34 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
+    
+    
+    
     // Set placeholder in TextField
     
+//    func keyboardDidShow(notification: Notification) {
+//        let info:NSDictionary = notification.userInfo! as NSDictionary
+//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+//        let keyboardY = self.view.frame.size.height - keyboardSize.height
+//        let editingTextfiledY: CGFloat! = self.activeTextView?.frame.origin.y
+//        if self.view.frame.origin.y >= 0 {
+//        if editingTextfiledY > keyboardY - 60 {
+//            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+//                self.view.frame = CGRect(x:0, y: self.view.frame.origin.y - (editingTextfiledY - (keyboardY - 60)), width:self.view.bounds.width,height: self.view.bounds.height)
+//            }, completion: nil)
+//        }
+//    }
+//    }
+//        func keyboardWillHide(notification: Notification) {
+//        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+//            self.view.frame = CGRect(x:0, y:0, width:self.view.bounds.width, height: self.view.bounds.height)
+//        }, completion: nil)
+//    }
+    
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
+        
+//        activeTextView = textView
         if (textView.text == "備註") {
             textView.text = ""
         }
