@@ -161,27 +161,12 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
 //        let converted = Date(timeIntervalSince1970: order.timestamp! / 1000)
         let datefor = DateFormatter()
         datefor.timeZone = NSTimeZone.local
-        datefor.dateFormat = "hh:mm a"
-        
-        
+        datefor.dateStyle = .long
+        datefor.timeStyle = .medium
+
         let texLabelTime = cell.viewWithTag(10) as! UILabel
         texLabelTime.text = datefor.string(from: Date(timeIntervalSince1970: order.timestamp! / 1000))
         texLabelTime.sizeToFit()
-        
-        
-        
-//        let converted = Date(timeIntervalSince1970: order.timestamp!)
-//
-//        let datefor = DateFormatter()
-//        datefor.timeZone = NSTimeZone.local
-//        datefor.timeStyle = .medium
-//        datefor.dateStyle = .long
-//        let time = datefor.string(from: converted)
-        
-//        let texLabelTime = cell.viewWithTag(10) as! UILabel
-//        texLabelTime.text = String(describing: time )
-//        texLabelTime.sizeToFit()
-        
         
         return cell
     }

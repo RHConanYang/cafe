@@ -255,6 +255,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
                 let dataabaseRef = Database.database().reference()
                 
                 dataabaseRef.child("order").childByAutoId().setValue(NPQ)
+                
             }else{
                 let name = dicListItems[i].value(forKey: "name") as! String
                 let ice = dicListItems[i].value(forKey: "ice") as! String
