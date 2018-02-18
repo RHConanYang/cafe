@@ -21,7 +21,6 @@
 		EC8E3FF91E8E15710032A404 /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E3FF81E8E15710032A404 /* ProductViewCell.swift */; };
 		EC8E3FFB1E8E15880032A404 /* ShoppingCartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E3FFA1E8E15880032A404 /* ShoppingCartViewCell.swift */; };
 		EC8E3FFD1E8E159D0032A404 /* CheckoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E3FFC1E8E159D0032A404 /* CheckoutViewCell.swift */; };
-		EC8E3FFF1E8E283B0032A404 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E3FFE1E8E283B0032A404 /* ProductsViewController.swift */; };
 		EC8E40011E8E29F00032A404 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E40001E8E29F00032A404 /* DataController.swift */; };
 		EC8E40031E8F56D90032A404 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E40021E8F56D90032A404 /* Item.swift */; };
 		EC8E40051E8F571C0032A404 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E40041E8F571C0032A404 /* Item+CoreDataProperties.swift */; };
@@ -62,7 +61,6 @@
 		EC8E3FF81E8E15710032A404 /* ProductViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
 		EC8E3FFA1E8E15880032A404 /* ShoppingCartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewCell.swift; sourceTree = "<group>"; };
 		EC8E3FFC1E8E159D0032A404 /* CheckoutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewCell.swift; sourceTree = "<group>"; };
-		EC8E3FFE1E8E283B0032A404 /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		EC8E40001E8E29F00032A404 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		EC8E40021E8F56D90032A404 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EC8E40041E8F571C0032A404 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				ECEA71051F2B491400D8F4CF /* MainViewController.swift */,
 				EC8E40061E8F578E0032A404 /* WelcomViewController.swift */,
 				ECEA712B1F2F1DB000D8F4CF /* GroupViewController.swift */,
-				EC8E3FFE1E8E283B0032A404 /* ProductsViewController.swift */,
 				EC8E400A1E8F58480032A404 /* ProductInfoViewController.swift */,
 				EC8E3FE01E8E13360032A404 /* ShoppingCartViewController.swift */,
 				EC8E400C1E8F58860032A404 /* CheckoutViewController.swift */,
@@ -294,13 +291,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cafe-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F8AB9335190FEE54020F66FB /* [CP] Embed Pods Frameworks */ = {
@@ -309,9 +309,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-cafe/Pods-cafe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -331,7 +336,6 @@
 				EC8E3FF71E8E15430032A404 /* Product.swift in Sources */,
 				ECEA71081F2E0D7900D8F4CF /* AdminTableViewController.swift in Sources */,
 				ECF4A8FC1ED7F68600249CCE /* MapViewController.swift in Sources */,
-				EC8E3FFF1E8E283B0032A404 /* ProductsViewController.swift in Sources */,
 				ECEA712C1F2F1DB000D8F4CF /* GroupViewController.swift in Sources */,
 				EC8E3FFB1E8E15880032A404 /* ShoppingCartViewCell.swift in Sources */,
 				EC8E40011E8E29F00032A404 /* DataController.swift in Sources */,

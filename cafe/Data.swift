@@ -70,7 +70,7 @@ class data {
         "t08.四季烏龍茶":
             ["tea1","$ 25","25","很秋條的飲料"],
         "t09.碳香烏龍茶":
-            ["tea1","$ 25","90","很秋條的飲料"],
+            ["tea1","$ 25","25","很秋條的飲料"],
         "t10.阿里山冰茶":
             ["tea1","$ 25","25","很秋條的飲料"],
         "t11.普耳茶":
@@ -173,14 +173,14 @@ class data {
 }
 
 struct Section {
-    var genre: String!
+    var type: String!
     var catergories: [String]!
-    var expanded: Bool!
+//    var expanded: Bool!
     
-    init(genre: String, catergories: [String], expanded: Bool) {
-        self.genre = genre
+    init(type: String, catergories: [String]) {
+        self.type = type
         self.catergories = catergories
-        self.expanded = expanded
+//        self.expanded = expanded
     }
 }
 

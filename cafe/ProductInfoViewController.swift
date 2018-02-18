@@ -25,11 +25,20 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var alertBox: UIView!
     @IBOutlet weak var backGro: UIImageView!
     var setTitle:String!
+    var picture: String!
+    var calPrice: String!
+    var price: String!
+    var scribe: String!
+    
+    
+    
     var prodactData:[String]!
     var categoryName:String!
     var listItems = [NSManagedObject]()
     var iceSel:String = ""
     var sugarSel:String = ""
+
+    
     
     override func viewDidLoad() {
         
@@ -76,24 +85,24 @@ class ProductInfoViewController: UIViewController {
         }
         
         // Get the prodact data according to the category name
-        switch categoryName {
-        case "🦁 義式咖啡":
-            prodactData = data.cafe[setTitle];
-        case "💥 鮮奶茶系列":
-            prodactData = data.milk[setTitle];
-        case "👻 鮮茶系列":
-            prodactData = data.tea[setTitle];
-        case "😂 水果茶系列":
-            prodactData = data.fruittea[setTitle];
-        case "😍 花草與養生系列":
-            prodactData = data.flowertea[setTitle];
-        case "😎 輕食系列":
-            prodactData = data.food[setTitle];
-            
+//        switch categoryName {
+//        case "🦁 義式咖啡":
+//            prodactData = data.cafe[setTitle];
+//        case "💥 鮮奶茶系列":
+//            prodactData = data.milk[setTitle];
+//        case "👻 鮮茶系列":
+//            prodactData = data.tea[setTitle];
+//        case "😂 水果茶系列":
+//            prodactData = data.fruittea[setTitle];
+//        case "😍 花草與養生系列":
+//            prodactData = data.flowertea[setTitle];
+//        case "😎 輕食系列":
+//            prodactData = data.food[setTitle];
+        
             // if food
-            iceSeg.isHidden = true
-            sugarSeg.isHidden = true
-            
+//            iceSeg.isHidden = true
+//            sugarSeg.isHidden = true
+        
 //            iceSeg.insertSegment(withTitle:"  ", at: 0, animated: true)
 //            iceSeg.insertSegment(withTitle:"  ", at: 1, animated: true)
 //            iceSeg.insertSegment(withTitle:"  ", at: 2, animated: true)
@@ -111,9 +120,9 @@ class ProductInfoViewController: UIViewController {
 //            sugarSeg.insertSegment(withTitle: "  ", at: 4, animated: true)
             
             //sugarSeg.removeAllSegments()
-        default:
-            print("default case");
-        }
+//        default:
+//            print("default case");
+//        }
         
         // Set redius and bounds
         prodactImage.layer.cornerRadius = 10
@@ -121,9 +130,9 @@ class ProductInfoViewController: UIViewController {
         
         // Prodact data
         prodactName.text = setTitle
-        prodactImage.image = UIImage(named: prodactData[0])
-        prodactPrice.text = prodactData[1]
-        prodactDescription.text = prodactData[3]
+        prodactImage.image = UIImage(named: picture)
+        prodactPrice.text = price
+        prodactDescription.text = scribe
         
 
         
@@ -176,7 +185,7 @@ class ProductInfoViewController: UIViewController {
             let item = Item(entity: entityDescription!, insertInto: moc)
             item.name = prodactName.text
             item.image = UIImagePNGRepresentation(prodactImage.image!)
-            item.displayPrice = prodactPrice.text
+            item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
             let roundPrice = prodactData[2]
@@ -200,7 +209,7 @@ class ProductInfoViewController: UIViewController {
             let item = Item(entity: entityDescription!, insertInto: moc)
             item.name = prodactName.text
             item.image = UIImagePNGRepresentation(prodactImage.image!)
-            item.displayPrice = prodactPrice.text
+            item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
             let roundPrice = prodactData[2]
@@ -242,11 +251,11 @@ class ProductInfoViewController: UIViewController {
             let item = Item(entity: entityDescription!, insertInto: moc);
             item.name = prodactName.text;
             item.image = UIImagePNGRepresentation(prodactImage.image!);
-            item.displayPrice = prodactPrice.text;
+            item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
-            let roundPrice = prodactData[2]
-            item.roundPrice = Int(roundPrice) as NSNumber?
+            let roundPrice = calPrice
+            item.roundPrice = Int(roundPrice!) as NSNumber?
             item.qty = 1;
             //print("Items saved: \(item)");
             do {
@@ -274,11 +283,11 @@ class ProductInfoViewController: UIViewController {
             let item = Item(entity: entityDescription!, insertInto: moc);
             item.name = prodactName.text;
             item.image = UIImagePNGRepresentation(prodactImage.image!);
-            item.displayPrice = prodactPrice.text;
+            item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
-            let roundPrice = prodactData[2]
-            item.roundPrice = Int(roundPrice) as NSNumber?
+            let roundPrice = calPrice
+            item.roundPrice = Int(roundPrice!) as NSNumber?
             item.qty = 1;
             
             do{
