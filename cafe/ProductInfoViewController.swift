@@ -83,47 +83,7 @@ class ProductInfoViewController: UIViewController {
         catch{
             print("Data did not Retrieve");
         }
-        
-        // Get the prodact data according to the category name
-//        switch categoryName {
-//        case "🦁 義式咖啡":
-//            prodactData = data.cafe[setTitle];
-//        case "💥 鮮奶茶系列":
-//            prodactData = data.milk[setTitle];
-//        case "👻 鮮茶系列":
-//            prodactData = data.tea[setTitle];
-//        case "😂 水果茶系列":
-//            prodactData = data.fruittea[setTitle];
-//        case "😍 花草與養生系列":
-//            prodactData = data.flowertea[setTitle];
-//        case "😎 輕食系列":
-//            prodactData = data.food[setTitle];
-        
-            // if food
-//            iceSeg.isHidden = true
-//            sugarSeg.isHidden = true
-        
-//            iceSeg.insertSegment(withTitle:"  ", at: 0, animated: true)
-//            iceSeg.insertSegment(withTitle:"  ", at: 1, animated: true)
-//            iceSeg.insertSegment(withTitle:"  ", at: 2, animated: true)
-//            iceSeg.insertSegment(withTitle:"  ", at: 3, animated: true)
-//            iceSeg.insertSegment(withTitle:"  ", at: 4, animated: true)
-//            iceSeg.insertSegment(withTitle:"  ", at: 5, animated: true)
-            
-            //iceSeg.removeAllSegments()
-            
-            
-//            sugarSeg.insertSegment(withTitle: "  ", at: 0, animated: true)
-//            sugarSeg.insertSegment(withTitle: "  ", at: 1, animated: true)
-//            sugarSeg.insertSegment(withTitle: "  ", at: 2, animated: true)
-//            sugarSeg.insertSegment(withTitle: "  ", at: 3, animated: true)
-//            sugarSeg.insertSegment(withTitle: "  ", at: 4, animated: true)
-            
-            //sugarSeg.removeAllSegments()
-//        default:
-//            print("default case");
-//        }
-        
+      
         // Set redius and bounds
         prodactImage.layer.cornerRadius = 10
         prodactImage.clipsToBounds = true
@@ -133,18 +93,15 @@ class ProductInfoViewController: UIViewController {
         prodactImage.image = UIImage(named: picture)
         prodactPrice.text = price
         prodactDescription.text = scribe
-        
 
-        
-        
         
     }
     
     // Move to shopping cart screen
     @objc func cartScreen(){
-        let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC;
+        let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC
         
-        navigationController?.show(shoppingCartScreen, sender: self);
+        navigationController?.show(shoppingCartScreen, sender: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,7 +113,7 @@ class ProductInfoViewController: UIViewController {
             listItems = results as! [NSManagedObject]
         }
         catch{
-            print("Data didn not Retrieve");
+            print("Data didn not Retrieve")
         }
         
     }
@@ -164,14 +121,14 @@ class ProductInfoViewController: UIViewController {
     // Order Now Button - add product to shopping cart and move to shopping cart screen
     @IBAction func orderNowButton(_ sender: UIButton) {
         var productFound = ""
-        var indexPath = 0
+//        var indexPath = 0
         
         // Check if product exists
         
         for i in 0 ..< listItems.count {
             if setTitle == listItems[i].value(forKey: "name") as! String {
                 productFound = setTitle
-                indexPath = i
+//                indexPath = i
                 //print("Product Exists \n\(productFound)")
             }
         }
@@ -188,8 +145,8 @@ class ProductInfoViewController: UIViewController {
             item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
-            let roundPrice = prodactData[2]
-            item.roundPrice = Int(roundPrice) as NSNumber?
+            let roundPrice = calPrice
+            item.roundPrice = Int(roundPrice!) as NSNumber?
             item.qty = 1
             
             //print("Items saved: \(item)");
@@ -212,12 +169,12 @@ class ProductInfoViewController: UIViewController {
             item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
-            let roundPrice = prodactData[2]
-            item.roundPrice = Int(roundPrice) as NSNumber?
+            let roundPrice = calPrice
+            item.roundPrice = Int(roundPrice!) as NSNumber?
             item.qty = 1
             
             do{
-                try moc.save();
+                try moc.save()
             }catch {
                 print("Failed to save");
                 return;
@@ -226,20 +183,21 @@ class ProductInfoViewController: UIViewController {
         
         // Move to shopping cart screen
         let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC;
-        navigationController?.show(shoppingCartScreen, sender: self);
+        navigationController?.show(shoppingCartScreen, sender: self)
         
     }
     
     // Add To Basket Button - add product to shopping cart
     @IBAction func addToBasketButton(_ sender: UIButton) {
         var productFound = ""
-        var indexPath = 0
+//        var indexPath = 0
+
         
         // Check if product exists
         for i in 0 ..< listItems.count {
             if setTitle == listItems[i].value(forKey: "name") as! String {
                 productFound = setTitle
-                indexPath = i
+//                indexPath = i
                 //print("Product Exists \n\(productFound)")
             }
         }
@@ -256,7 +214,7 @@ class ProductInfoViewController: UIViewController {
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
             let roundPrice = calPrice
             item.roundPrice = Int(roundPrice!) as NSNumber?
-            item.qty = 1;
+            item.qty = 1
             //print("Items saved: \(item)");
             do {
                 try moc.save();

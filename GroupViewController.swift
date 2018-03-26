@@ -111,7 +111,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 66
+        return 51
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
@@ -135,15 +135,63 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        }
 //    }
     
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 2
-//    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 2
+    }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let header = ExpandableHeaderView()
-//        header.customInit(title: sections[section].genre, section: section, delegate: self)
-//        return header
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let headerView = UIView()
+            headerView.backgroundColor = UIColor.white
+            let headerLabel = UILabel()
+            headerLabel.text = "咖啡系列"
+            headerLabel.frame = CGRect(x: 12, y: 8, width: 100, height: 35)
+            headerLabel.font = UIFont.systemFont(ofSize: 18)
+            headerLabel.textColor = UIColor.gray
+            
+            headerView.addSubview(headerLabel)
+            return headerView
+            
+        case 1:
+            let headerView = UIView()
+            headerView.backgroundColor = UIColor.white
+            let headerLabel = UILabel()
+            headerLabel.text = "鮮奶系列"
+            headerLabel.frame = CGRect(x: 12, y: 8, width: 100, height: 35)
+            headerLabel.font = UIFont.systemFont(ofSize: 18)
+            headerLabel.textColor = UIColor.gray
+            
+            headerView.addSubview(headerLabel)
+            return headerView
+        case 2:
+            let headerView = UIView()
+            headerView.backgroundColor = UIColor.white
+            let headerLabel = UILabel()
+            headerLabel.text = "茶系列"
+            headerLabel.frame = CGRect(x: 12, y: 8, width: 100, height: 35)
+            headerLabel.font = UIFont.systemFont(ofSize: 18)
+            headerLabel.textColor = UIColor.gray
+            
+            headerView.addSubview(headerLabel)
+            return headerView
+        case 3:
+            let headerView = UIView()
+            headerView.backgroundColor = UIColor.white
+            let headerLabel = UILabel()
+            headerLabel.text = "水果茶系列"
+            headerLabel.frame = CGRect(x: 12, y: 8, width: 100, height: 35)
+            headerLabel.font = UIFont.systemFont(ofSize: 18)
+            headerLabel.textColor = UIColor.gray
+            
+            headerView.addSubview(headerLabel)
+            return headerView
+        default:
+            let headerView = UIView()
+            
+            return headerView
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell")!
@@ -179,15 +227,42 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let productInfoScreen = storyboard?.instantiateViewController(withIdentifier: "product info view") as! ProductInfoViewController
-//        //print("Prodact Details \(details)");
-//        productInfoScreen.categoryName = cafes[indexPath.row].type!
-//        productInfoScreen.setTitle = cafes[indexPath.row].name!
-//        productInfoScreen.price = cafes[indexPath.row].price!
-//        productInfoScreen.scribe = cafes[indexPath.row].scribe!
-//        productInfoScreen.calPrice = cafes[indexPath.row].calPrice!
-//        productInfoScreen.picture = cafes[indexPath.row].picture!
-//        navigationController?.show(productInfoScreen, sender: self);
+        let productInfoScreen = storyboard?.instantiateViewController(withIdentifier: "product info view") as! ProductInfoViewController
+
+        
+        if indexPath.section == 0{
+            productInfoScreen.categoryName = cafes[indexPath.row].type!
+            productInfoScreen.setTitle = cafes[indexPath.row].name!
+            productInfoScreen.price = cafes[indexPath.row].price!
+            productInfoScreen.scribe = cafes[indexPath.row].scribe!
+            productInfoScreen.calPrice = cafes[indexPath.row].calPrice!
+            productInfoScreen.picture = cafes[indexPath.row].picture!
+            navigationController?.show(productInfoScreen, sender: self);
+        }else if indexPath.section == 1 {
+            productInfoScreen.categoryName = milks[indexPath.row].type!
+            productInfoScreen.setTitle = milks[indexPath.row].name!
+            productInfoScreen.price = milks[indexPath.row].price!
+            productInfoScreen.scribe = milks[indexPath.row].scribe!
+            productInfoScreen.calPrice = milks[indexPath.row].calPrice!
+            productInfoScreen.picture = milks[indexPath.row].picture!
+            navigationController?.show(productInfoScreen, sender: self);
+        }else if indexPath.section == 2 {
+            productInfoScreen.categoryName = teas[indexPath.row].type!
+            productInfoScreen.setTitle = teas[indexPath.row].name!
+            productInfoScreen.price = teas[indexPath.row].price!
+            productInfoScreen.scribe = teas[indexPath.row].scribe!
+            productInfoScreen.calPrice = teas[indexPath.row].calPrice!
+            productInfoScreen.picture = teas[indexPath.row].picture!
+            navigationController?.show(productInfoScreen, sender: self);
+        }else {
+            productInfoScreen.categoryName = fruits[indexPath.row].type!
+            productInfoScreen.setTitle = fruits[indexPath.row].name!
+            productInfoScreen.price = fruits[indexPath.row].price!
+            productInfoScreen.scribe = fruits[indexPath.row].scribe!
+            productInfoScreen.calPrice = fruits[indexPath.row].calPrice!
+            productInfoScreen.picture = fruits[indexPath.row].picture!
+            navigationController?.show(productInfoScreen, sender: self);
+        }
     }
     
     func fetchDrinks() {
@@ -250,14 +325,8 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
+
+
+
+

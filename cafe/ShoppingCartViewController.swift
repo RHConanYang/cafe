@@ -38,42 +38,8 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
             print("Data did not Retrieve")
         }
         // Refresh tableView
-        self.tableView.reloadData();
-        
-        // Show the total quantity from Core Data when the view did Load
-        var itemsQuantity = 0
-        for (Qty) in listItems {
-            let itemQty = Qty.value(forKey: "qty") as! Int
-            itemsQuantity = itemsQuantity + itemQty
-        }
-        
-        totalQuantity = itemsQuantity
-        totalItems.text = String("總共:\(totalQuantity)杯飲料");
-        
-        // Show the total amount when the view did Load
-        var totalPrice = 0
-        var itemAmount = 0
-        for (mony) in listItems {
-            let itemPrice = mony.value(forKey: "roundPrice") as! Int
-            let itemQty = mony.value(forKey: "qty") as! Int
-            itemAmount = itemPrice * itemQty
-            totalPrice = totalPrice + itemAmount
-        }
-        totalAmount = totalPrice
-        totalCash.text = String("共: \(totalAmount) 元")
-        
-        // MARK: - Buttons navigation
-        // Home Button
-        //let cartButton = UIBarButtonItem(title: "123", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShoppingCartVC.homeScreen))
-        //self.navigationItem.leftBarButtonItem = cartButton
-        
-        
-        // Back Button
-        //let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShoppingCartVC.goBack))
-        //self.navigationItem.leftBarButtonItem = backButton
-        // Disable back button
-        //self.navigationItem.leftBarButtonItem?.isEnabled = false
-        
+        self.tableView.reloadData()
+
         orderButton.backgroundColor = UIColor.darkGray
         orderButton.layer.cornerRadius = orderButton.frame.height / 2
         orderButton.setTitleColor(UIColor.white, for: .normal)
@@ -91,15 +57,10 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
         navigationController?.show(homeScreen!, sender: self)
     }
     
-    // Go Back
-//    func goBack(){
-//        let backScreen = storyboard?.instantiateViewController(withIdentifier: "group view") as! ProductInfoViewController
-//        navigationController?.show(backScreen, sender: self)
-//    }
-    
+
     // Showing us the data as soon as we walk directly from the home screen at first load
-    override func viewDidAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool) {
+
         // Retrieve the data from Core Data
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
         
@@ -111,23 +72,41 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
             print("Data didn not Retrieve")
         }
         
-        // Refresh tableView
-        self.tableView.reloadData()
-        
         // Print into Debug The products we have in the cart
         for i in 0 ..< listItems.count {
             print("ListItems\(i): \(listItems[i])")
         }
         
-        // Counting the total amount of products we have in the cart
+        // Counting the total quantity of products we have in the cart
+        
         var itemsQuantity = 0
         for (Qty) in listItems {
             let itemQty = Qty.value(forKey: "qty") as! Int
             itemsQuantity = itemsQuantity + itemQty
         }
+
+        totalQuantity = itemsQuantity
+        totalItems.text = String("總共:\(totalQuantity)杯飲料")
+        
+        // Show the total amount
+        var totalPrice = 0
+        var itemAmount = 0
+        for (mony) in listItems {
+            let itemPrice = mony.value(forKey: "roundPrice") as! Int
+            let itemQty = mony.value(forKey: "qty") as! Int
+            itemAmount = itemPrice * itemQty
+            totalPrice = totalPrice + itemAmount
+        }
+        totalAmount = totalPrice
+        totalCash.text = String("共: \(totalAmount) 元")
         
         // If there's 0 product in the cart, disable the checkout button
         self.orderButton?.isEnabled = (itemsQuantity != 0 && self.listItems.count > 0)
+        
+        // Refresh tableView
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
     }
     
