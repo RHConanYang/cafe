@@ -199,15 +199,28 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
 
         if indexPath.section == 0{
+            let textlabelPrice = cell.viewWithTag(3) as! UILabel
+            textlabelPrice.text = String(describing: cafes[indexPath.row].price!)
+            
             cell.textLabel?.text = cafes[indexPath.row].name
             return cell
         }else if indexPath.section == 1 {
+            let textlabelPrice = cell.viewWithTag(3) as! UILabel
+            textlabelPrice.text = String(describing: milks[indexPath.row].price!)
+            
             cell.textLabel?.text = milks[indexPath.row].name
             return cell
         }else if indexPath.section == 2 {
+            let textlabelPrice = cell.viewWithTag(3) as! UILabel
+            textlabelPrice.text = String(describing: teas[indexPath.row].price!)
+            
+            
             cell.textLabel?.text = teas[indexPath.row].name
             return cell
         }else {
+            let textlabelPrice = cell.viewWithTag(3) as! UILabel
+            textlabelPrice.text = String(describing: fruits[indexPath.row].price!)
+            
             cell.textLabel?.text = fruits[indexPath.row].name
             return cell
         }
