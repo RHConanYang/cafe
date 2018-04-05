@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Set Navigation Bar title color and size.
         let attributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.foregroundColor: UIColor.black,
             NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 22)!
         ]
         

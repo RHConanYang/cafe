@@ -27,16 +27,16 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
         title = "購物車"
         
         // Retrieve the data from Core Data
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item");
-
-        
-        do{
-            let results = try moc.fetch(fetchRequest);
-            listItems = results as! [NSManagedObject];
-        }
-        catch{
-            print("Data did not Retrieve")
-        }
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item");
+//
+//
+//        do{
+//            let results = try moc.fetch(fetchRequest);
+//            listItems = results as! [NSManagedObject];
+//        }
+//        catch{
+//            print("Data did not Retrieve")
+//        }
         // Refresh tableView
         self.tableView.reloadData()
 

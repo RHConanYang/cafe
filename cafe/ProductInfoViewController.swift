@@ -126,7 +126,7 @@ class ProductInfoViewController: UIViewController {
         // Check if product exists
         
         for i in 0 ..< listItems.count {
-            if setTitle == listItems[i].value(forKey: "name") as! String {
+            if setTitle == listItems[i].value(forKey: "name") as? String {
                 productFound = setTitle
 //                indexPath = i
                 //print("Product Exists \n\(productFound)")
@@ -195,7 +195,7 @@ class ProductInfoViewController: UIViewController {
         
         // Check if product exists
         for i in 0 ..< listItems.count {
-            if setTitle == listItems[i].value(forKey: "name") as! String {
+            if setTitle == listItems[i].value(forKey: "name") as? String {
                 productFound = setTitle
 //                indexPath = i
                 //print("Product Exists \n\(productFound)")

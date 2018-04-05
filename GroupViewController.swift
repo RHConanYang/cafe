@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -20,21 +20,24 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var teas = [DrinkModel]()
     var fruits = [DrinkModel]()
     
-    var section = ["1","2","3","4"]
+    var filteredCafe = [DrinkModel]()
+    var filteredTeas = [DrinkModel]()
+    var filteredMilk = [DrinkModel]()
+    var filteredFruits = [DrinkModel]()
+    
+    let searchController = UISearchBar()
+
+//    var sections = ["1","2","3","4"]
     
     
     var ref: DatabaseReference!
     private var databaseHandle: DatabaseHandle!
     
-//    var sections = [
-//        Section(type: "🦁 義式咖啡",
-//                catergories: []
-//                )
-//    ]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = ""
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -42,7 +45,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         
         //self.navigationController?.navigationBar.titleTextAttributes = frame(
-        UIBarButtonItem.appearance().setTitlePositionAdjustment(UIOffset(horizontal: 100, vertical: 30), for: UIBarMetrics.default)
+//        UIBarButtonItem.appearance().setTitlePositionAdjustment(UIOffset(horizontal: 100, vertical: 30), for: UIBarMetrics.default)
         //self.navigationItem.titleView = UIView(frame: (CGRectMake(10, 1, 50, 10)))
         let attributes = [
             NSAttributedStringKey.foregroundColor: UIColor.white,
@@ -69,16 +72,16 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.backBarButtonItem?.isEnabled = false
         
         fetchDrinks()
-//        fetchMilk()
+        
+        configureSearchBar()
+
+        
         
         
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     @objc func cartScreen(){
         let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC
@@ -92,21 +95,76 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(vc, animated: true, completion: nil)
     }
     
+    // Mark configureSearchBar
+    func configureSearchBar() {
+        navigationItem.titleView = searchController
+        
+        
+      
+        searchController.sizeToFit()
+        searchController.placeholder = ""
+        searchController.delegate = self
+        
+        
+        definesPresentationContext = true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        guard !searchText.isEmpty else {
+            filteredCafe = cafes
+            filteredTeas = teas
+            filteredMilk = milks
+            filteredFruits = fruits
+            tableView.reloadData()
+            return
+        }
+        filteredCafe = cafes.filter({ drink -> Bool in
+            drink.name!.contains(searchText)
+        })
+        filteredTeas = teas.filter({ drink -> Bool in
+            drink.name!.contains(searchText)
+        })
+        filteredMilk = milks.filter({ drink -> Bool in
+            drink.name!.contains(searchText)
+        })
+        filteredFruits = fruits.filter({ drink -> Bool in
+            drink.name!.contains(searchText)
+        })
+        tableView.reloadData()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchController.showsCancelButton = true
+        
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.showsCancelButton = false
+        searchController.text = ""
+        searchController.resignFirstResponder()
+        
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController.resignFirstResponder()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return cafes.count
+            return filteredCafe.count
         }
         else if section == 1{
-            return milks.count
+            return filteredMilk.count
         }
         else if section == 2{
-            return teas.count
+            return filteredTeas.count
         }else {
-            return fruits.count
+            return filteredFruits.count
         }
     }
     
@@ -127,13 +185,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return ""
         }
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if (sections[indexPath.section].expanded) {
-//            return 44
-//        } else {
-//            return 0
-//        }
-//    }
+
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2
@@ -200,80 +252,69 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         if indexPath.section == 0{
             let textlabelPrice = cell.viewWithTag(3) as! UILabel
-            textlabelPrice.text = String(describing: cafes[indexPath.row].price!)
+            textlabelPrice.text = String(describing: filteredCafe[indexPath.row].price!)
             
-            cell.textLabel?.text = cafes[indexPath.row].name
+            cell.textLabel?.text = filteredCafe[indexPath.row].name
             return cell
         }else if indexPath.section == 1 {
             let textlabelPrice = cell.viewWithTag(3) as! UILabel
-            textlabelPrice.text = String(describing: milks[indexPath.row].price!)
+            textlabelPrice.text = String(describing: filteredMilk[indexPath.row].price!)
             
-            cell.textLabel?.text = milks[indexPath.row].name
+            cell.textLabel?.text = filteredMilk[indexPath.row].name
             return cell
         }else if indexPath.section == 2 {
             let textlabelPrice = cell.viewWithTag(3) as! UILabel
-            textlabelPrice.text = String(describing: teas[indexPath.row].price!)
+            textlabelPrice.text = String(describing: filteredTeas[indexPath.row].price!)
             
-            
-            cell.textLabel?.text = teas[indexPath.row].name
+            cell.textLabel?.text = filteredTeas[indexPath.row].name
             return cell
         }else {
             let textlabelPrice = cell.viewWithTag(3) as! UILabel
-            textlabelPrice.text = String(describing: fruits[indexPath.row].price!)
+            textlabelPrice.text = String(describing: filteredFruits[indexPath.row].price!)
             
-            cell.textLabel?.text = fruits[indexPath.row].name
+            cell.textLabel?.text = filteredFruits[indexPath.row].name
             return cell
         }
 
         
     }
     
-//    func toggleSection(header: ExpandableHeaderView, section: Int) {
-//        sections[section].expanded = !sections[section].expanded
-//
-//
-//        tableView.beginUpdates()
-//        for i in 0 ..< sections[section].catergories.count {
-//            tableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
-//        }
-//        tableView.endUpdates()
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let productInfoScreen = storyboard?.instantiateViewController(withIdentifier: "product info view") as! ProductInfoViewController
 
         
         if indexPath.section == 0{
-            productInfoScreen.categoryName = cafes[indexPath.row].type!
-            productInfoScreen.setTitle = cafes[indexPath.row].name!
-            productInfoScreen.price = cafes[indexPath.row].price!
-            productInfoScreen.scribe = cafes[indexPath.row].scribe!
-            productInfoScreen.calPrice = cafes[indexPath.row].calPrice!
-            productInfoScreen.picture = cafes[indexPath.row].picture!
+            productInfoScreen.categoryName = filteredCafe[indexPath.row].type!
+            productInfoScreen.setTitle = filteredCafe[indexPath.row].name!
+            productInfoScreen.price = filteredCafe[indexPath.row].price!
+            productInfoScreen.scribe = filteredCafe[indexPath.row].scribe!
+            productInfoScreen.calPrice = filteredCafe[indexPath.row].calPrice!
+            productInfoScreen.picture = filteredCafe[indexPath.row].picture!
             navigationController?.show(productInfoScreen, sender: self);
         }else if indexPath.section == 1 {
-            productInfoScreen.categoryName = milks[indexPath.row].type!
-            productInfoScreen.setTitle = milks[indexPath.row].name!
-            productInfoScreen.price = milks[indexPath.row].price!
-            productInfoScreen.scribe = milks[indexPath.row].scribe!
-            productInfoScreen.calPrice = milks[indexPath.row].calPrice!
-            productInfoScreen.picture = milks[indexPath.row].picture!
+            productInfoScreen.categoryName = filteredMilk[indexPath.row].type!
+            productInfoScreen.setTitle = filteredMilk[indexPath.row].name!
+            productInfoScreen.price = filteredMilk[indexPath.row].price!
+            productInfoScreen.scribe = filteredMilk[indexPath.row].scribe!
+            productInfoScreen.calPrice = filteredMilk[indexPath.row].calPrice!
+            productInfoScreen.picture = filteredMilk[indexPath.row].picture!
             navigationController?.show(productInfoScreen, sender: self);
         }else if indexPath.section == 2 {
-            productInfoScreen.categoryName = teas[indexPath.row].type!
-            productInfoScreen.setTitle = teas[indexPath.row].name!
-            productInfoScreen.price = teas[indexPath.row].price!
-            productInfoScreen.scribe = teas[indexPath.row].scribe!
-            productInfoScreen.calPrice = teas[indexPath.row].calPrice!
-            productInfoScreen.picture = teas[indexPath.row].picture!
+            productInfoScreen.categoryName = filteredTeas[indexPath.row].type!
+            productInfoScreen.setTitle = filteredTeas[indexPath.row].name!
+            productInfoScreen.price = filteredTeas[indexPath.row].price!
+            productInfoScreen.scribe = filteredTeas[indexPath.row].scribe!
+            productInfoScreen.calPrice = filteredTeas[indexPath.row].calPrice!
+            productInfoScreen.picture = filteredTeas[indexPath.row].picture!
             navigationController?.show(productInfoScreen, sender: self);
         }else {
-            productInfoScreen.categoryName = fruits[indexPath.row].type!
-            productInfoScreen.setTitle = fruits[indexPath.row].name!
-            productInfoScreen.price = fruits[indexPath.row].price!
-            productInfoScreen.scribe = fruits[indexPath.row].scribe!
-            productInfoScreen.calPrice = fruits[indexPath.row].calPrice!
-            productInfoScreen.picture = fruits[indexPath.row].picture!
+            productInfoScreen.categoryName = filteredFruits[indexPath.row].type!
+            productInfoScreen.setTitle = filteredFruits[indexPath.row].name!
+            productInfoScreen.price = filteredFruits[indexPath.row].price!
+            productInfoScreen.scribe = filteredFruits[indexPath.row].scribe!
+            productInfoScreen.calPrice = filteredFruits[indexPath.row].calPrice!
+            productInfoScreen.picture = filteredFruits[indexPath.row].picture!
             navigationController?.show(productInfoScreen, sender: self);
         }
     }
@@ -289,6 +330,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             self.cafes = newdrink
+            self.filteredCafe = self.cafes
             self.tableView.reloadData()
             
             
@@ -302,6 +344,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             self.teas = newtea
+            self.filteredTeas = self.teas
             self.tableView.reloadData()
             
         })
@@ -317,6 +360,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             self.fruits = newfruit
+            self.filteredFruits = self.fruits
             self.tableView.reloadData()
             
         })
@@ -331,13 +375,16 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             self.milks = newmilk
+            self.filteredMilk = self.milks
             self.tableView.reloadData()
             
         })
         
+        
+        
+        
     }
-    
-    
+
 }
 
 
