@@ -104,7 +104,7 @@ class WelcomViewController: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
                     
                     // Check user isn't nil
-                    if let u = user {
+                    if user != nil {
                         // user found!
                         // save password and email
                         UserDefaults.standard.set(email, forKey: "email")
@@ -128,7 +128,7 @@ class WelcomViewController: UIViewController {
                 // registor user.
                 Auth.auth().createUser(withEmail: email, password: pass, completion: { (user, error) in
                     
-                    if let u = user{
+                    if user != nil{
                         
                         let userID: String = (user?.uid)!
                         let userEmail: String = self.emailTF.text!
