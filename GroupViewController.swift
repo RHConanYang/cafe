@@ -13,6 +13,7 @@ import FirebaseDatabase
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    var activityView:UIActivityIndicatorView!
 
     
     var cafes = [DrinkModel]()
@@ -71,6 +72,14 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Hide Back Button - to prevent showing two buttons with the same purpose
         self.navigationItem.backBarButtonItem?.isEnabled = false
         
+        
+        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView.color = secondaryColor
+        activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
+        activityView.center = self.view.center
+        
+        view.addSubview(activityView)
+        
         fetchDrinks()
         
         configureSearchBar()
@@ -87,6 +96,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC
         
         navigationController?.show(shoppingCartScreen, sender: self)
+        activityView.startAnimating()
     }
     
     @objc func mainScreen(){
@@ -379,12 +389,14 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
             
         })
-        
-        
-        
+
         
     }
 
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        activityView.stopAnimating()
+    }
 }
 
 

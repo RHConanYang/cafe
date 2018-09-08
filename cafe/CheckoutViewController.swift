@@ -19,8 +19,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
     var listItems = [NSManagedObject]()
     var dicListItems = [NSDictionary]()
 
-
-    
+    var activityView:UIActivityIndicatorView!
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalCartAmount: UILabel!
@@ -349,7 +348,5 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
 //        dismiss(animated: true, completion: nil)
     
     }
-    
-    
 
 }

@@ -30,7 +30,7 @@ class ProductInfoViewController: UIViewController {
     var price: String!
     var scribe: String!
     
-    
+    var activityView:UIActivityIndicatorView!
     
     var prodactData:[String]!
     var categoryName:String!
@@ -94,11 +94,20 @@ class ProductInfoViewController: UIViewController {
         prodactPrice.text = price
         prodactDescription.text = scribe
 
+        //activityView
+        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView.color = secondaryColor
+        activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
+        activityView.center = self.view.center
+        
+        view.addSubview(activityView)
         
     }
     
     // Move to shopping cart screen
     @objc func cartScreen(){
+        
+        activityView.startAnimating()
         let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC
         
         navigationController?.show(shoppingCartScreen, sender: self)
@@ -122,7 +131,9 @@ class ProductInfoViewController: UIViewController {
     @IBAction func orderNowButton(_ sender: UIButton) {
         var productFound = ""
 //        var indexPath = 0
+
         
+        activityView.startAnimating()
         // Check if product exists
         
         for i in 0 ..< listItems.count {
@@ -180,7 +191,9 @@ class ProductInfoViewController: UIViewController {
                 return;
             }
         }
-        
+        DispatchQueue.main.async {
+            self.activityView.startAnimating()
+        }
         // Move to shopping cart screen
         let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC;
         navigationController?.show(shoppingCartScreen, sender: self)
@@ -277,6 +290,11 @@ class ProductInfoViewController: UIViewController {
     func resetVariables(){
         alertBox.isHidden=true
         self.alertBox.alpha=1
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        activityView.stopAnimating()
     }
     
     
