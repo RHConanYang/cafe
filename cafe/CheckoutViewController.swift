@@ -55,7 +55,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // MARK: - Buttons navigation
         // Home Button
-        let cartButton = UIBarButtonItem(image: UIImage(named: "home30"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(CheckoutViewController.homeScreen))
+        let cartButton = UIBarButtonItem(image: UIImage(named: "home30"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(CheckoutViewController.homeScreen))
         
         self.navigationItem.rightBarButtonItem = cartButton
         

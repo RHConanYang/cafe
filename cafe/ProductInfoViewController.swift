@@ -61,7 +61,7 @@ class ProductInfoViewController: UIViewController {
         orderNowButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         // Blureffect.
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = backGro.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -69,7 +69,7 @@ class ProductInfoViewController: UIViewController {
         
         
         // Cart Button
-        let cartButton = UIBarButtonItem(image: UIImage(named: "cart30"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(ProductInfoViewController.cartScreen));
+        let cartButton = UIBarButtonItem(image: UIImage(named: "cart30"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(ProductInfoViewController.cartScreen));
         
         self.navigationItem.rightBarButtonItem = cartButton;
         
@@ -95,7 +95,7 @@ class ProductInfoViewController: UIViewController {
         prodactDescription.text = scribe
 
         //activityView
-        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView = UIActivityIndicatorView(style: .gray)
         activityView.color = secondaryColor
         activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
         activityView.center = self.view.center
@@ -152,7 +152,7 @@ class ProductInfoViewController: UIViewController {
             let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc)
             let item = Item(entity: entityDescription!, insertInto: moc)
             item.name = prodactName.text
-            item.image = UIImagePNGRepresentation(prodactImage.image!)
+            item.image = prodactImage.image!.pngData()
             item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
@@ -176,7 +176,7 @@ class ProductInfoViewController: UIViewController {
             let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc)
             let item = Item(entity: entityDescription!, insertInto: moc)
             item.name = prodactName.text
-            item.image = UIImagePNGRepresentation(prodactImage.image!)
+            item.image = prodactImage.image!.pngData()
             item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
@@ -221,7 +221,7 @@ class ProductInfoViewController: UIViewController {
             let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc);
             let item = Item(entity: entityDescription!, insertInto: moc);
             item.name = prodactName.text;
-            item.image = UIImagePNGRepresentation(prodactImage.image!);
+            item.image = prodactImage.image!.pngData();
             item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)
@@ -253,7 +253,7 @@ class ProductInfoViewController: UIViewController {
             let entityDescription = NSEntityDescription.entity(forEntityName: "Item", in: moc);
             let item = Item(entity: entityDescription!, insertInto: moc);
             item.name = prodactName.text;
-            item.image = UIImagePNGRepresentation(prodactImage.image!);
+            item.image = prodactImage.image!.pngData();
             item.displayPrice = prodactPrice.text!
             item.ice = iceSeg.titleForSegment(at: iceSeg.selectedSegmentIndex)
             item.sugar = sugarSeg.titleForSegment(at: sugarSeg.selectedSegmentIndex)

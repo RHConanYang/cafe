@@ -37,8 +37,8 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
         UIBarButtonItem.appearance().setTitlePositionAdjustment(UIOffset(horizontal: 100, vertical: 30), for: UIBarMetrics.default)
         //self.navigationItem.titleView = UIView(frame: (CGRectMake(10, 1, 50, 10)))
         let attributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 21)!
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 21)!
             
         ]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
@@ -46,7 +46,7 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
         
         
         // Cart Button
-        let cartButton = UIBarButtonItem(image: UIImage(named: "home30"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(AdminTableViewController.logoutScreen))
+        let cartButton = UIBarButtonItem(image: UIImage(named: "home30"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(AdminTableViewController.logoutScreen))
         
         self.navigationItem.rightBarButtonItem = cartButton
         
@@ -173,7 +173,7 @@ class AdminTableViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let order = orders[indexPath.row]
             order.ref?.removeValue()

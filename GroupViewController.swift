@@ -49,8 +49,8 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        UIBarButtonItem.appearance().setTitlePositionAdjustment(UIOffset(horizontal: 100, vertical: 30), for: UIBarMetrics.default)
         //self.navigationItem.titleView = UIView(frame: (CGRectMake(10, 1, 50, 10)))
         let attributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 21)!
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 21)!
             
         ]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
@@ -58,11 +58,11 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         // Cart Button
-        let cartButton = UIBarButtonItem(image: UIImage(named: "cart30"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(GroupViewController.cartScreen))
+        let cartButton = UIBarButtonItem(image: UIImage(named: "cart30"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(GroupViewController.cartScreen))
         
         self.navigationItem.rightBarButtonItem = cartButton
         
-        let mainButton = UIBarButtonItem(image: UIImage(named: "home30"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(GroupViewController.mainScreen))
+        let mainButton = UIBarButtonItem(image: UIImage(named: "home30"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(GroupViewController.mainScreen))
         
         self.navigationItem.leftBarButtonItem = mainButton
         
@@ -73,7 +73,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.backBarButtonItem?.isEnabled = false
         
         
-        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView = UIActivityIndicatorView(style: .gray)
         activityView.color = secondaryColor
         activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
         activityView.center = self.view.center
@@ -294,7 +294,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let productInfoScreen = storyboard?.instantiateViewController(withIdentifier: "product info view") as! ProductInfoViewController
 
         
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             productInfoScreen.categoryName = filteredCafe[indexPath.row].type!
             productInfoScreen.setTitle = filteredCafe[indexPath.row].name!
             productInfoScreen.price = filteredCafe[indexPath.row].price!
@@ -398,7 +398,3 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         activityView.stopAnimating()
     }
 }
-
-
-
-

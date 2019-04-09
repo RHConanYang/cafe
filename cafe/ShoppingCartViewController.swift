@@ -61,15 +61,17 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
     // Showing us the data as soon as we walk directly from the home screen at first load
     override func viewWillAppear(_ animated: Bool) {
 
-        // Retrieve the data from Core Data
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-        
-        do{
-            let results = try moc.fetch(fetchRequest)
-            listItems = results as! [NSManagedObject]
-        }
-        catch{
-            print("Data didn not Retrieve")
+        DispatchQueue.main.async {
+            // Retrieve the data from Core Data
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+            
+            do{
+                let results = try self.moc.fetch(fetchRequest)
+                self.listItems = results as! [NSManagedObject]
+            }
+            catch{
+                print("Data didn not Retrieve")
+            }
         }
         
         // Print into Debug The products we have in the cart
@@ -78,15 +80,15 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         // Counting the total quantity of products we have in the cart
-        
         var itemsQuantity = 0
-        for (Qty) in listItems {
-            let itemQty = Qty.value(forKey: "qty") as! Int
-            itemsQuantity = itemsQuantity + itemQty
+        DispatchQueue.main.async {
+            for (Qty) in self.listItems {
+                let itemQty = Qty.value(forKey: "qty") as! Int
+                itemsQuantity = itemsQuantity + itemQty
+            }
+            self.totalQuantity = itemsQuantity
+            self.totalItems.text = String("總共:\(self.totalQuantity)杯飲料")
         }
-
-        totalQuantity = itemsQuantity
-        totalItems.text = String("總共:\(totalQuantity)杯飲料")
         
         // Show the total amount
         var totalPrice = 0
@@ -183,7 +185,7 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: - Delete row
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             

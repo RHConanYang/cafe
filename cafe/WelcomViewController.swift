@@ -53,7 +53,7 @@ class WelcomViewController: UIViewController {
         signSelector.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         // Blureffect.
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = backGround.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
