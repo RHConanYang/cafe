@@ -93,15 +93,16 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Show the total amount
         var totalPrice = 0
         var itemAmount = 0
-        for (mony) in listItems {
-            let itemPrice = mony.value(forKey: "roundPrice") as! Int
-            let itemQty = mony.value(forKey: "qty") as! Int
-            itemAmount = itemPrice * itemQty
-            totalPrice = totalPrice + itemAmount
+        DispatchQueue.main.async {
+            for (mony) in self.listItems {
+                let itemPrice = mony.value(forKey: "roundPrice") as! Int
+                let itemQty = mony.value(forKey: "qty") as! Int
+                itemAmount = itemPrice * itemQty
+                totalPrice = totalPrice + itemAmount
+            }
+            self.totalAmount = totalPrice
+            self.totalCash.text = String("共: \(self.totalAmount) 元")
         }
-        totalAmount = totalPrice
-        totalCash.text = String("共: \(totalAmount) 元")
-        
         // If there's 0 product in the cart, disable the checkout button
         self.orderButton?.isEnabled = (itemsQuantity != 0 && self.listItems.count > 0)
         

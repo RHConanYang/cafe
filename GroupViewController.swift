@@ -73,9 +73,9 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.backBarButtonItem?.isEnabled = false
         
         
-        activityView = UIActivityIndicatorView(style: .gray)
+        activityView = UIActivityIndicatorView(style: .whiteLarge)
         activityView.color = secondaryColor
-        activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
+        activityView.frame = CGRect(x: 0, y: 0, width: 200.0, height: 200.0)
         activityView.center = self.view.center
         
         view.addSubview(activityView)
@@ -94,9 +94,12 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @objc func cartScreen(){
         let shoppingCartScreen = storyboard?.instantiateViewController(withIdentifier: "shopping cart view") as! ShoppingCartVC
-        
-        navigationController?.show(shoppingCartScreen, sender: self)
-        activityView.startAnimating()
+        DispatchQueue.main.async {
+            self.activityView.startAnimating()
+            
+            self.navigationController?.show(shoppingCartScreen, sender: self)
+            self.activityView.stopAnimating()
+        }
     }
     
     @objc func mainScreen(){

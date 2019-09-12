@@ -55,6 +55,7 @@ class ShoppingCartViewCell: UITableViewCell {
             self.productStepper?.value = qty.doubleValue
             // Show the quantity from Core Data when the view did Load
             self.productQuantity?.text = "數量: \(qty)";
+            productStepper.minimumValue = 1
         }
         
         let images = item.image
