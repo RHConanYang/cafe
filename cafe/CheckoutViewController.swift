@@ -149,6 +149,7 @@ class CheckoutViewController: UIViewController, UITableViewDataSource, UITableVi
         let item = listItems[indexPath.row] as! Item
         cell.SetProductAttribute(item)
         cell.tag = indexPath.row
+        cell.selectionStyle = .none
         return cell
     }
     

@@ -116,6 +116,7 @@ class WelcomViewController: UIViewController {
                             let val = snap.value
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: val as! String) as UIViewController
+                            vc.modalPresentationStyle = .fullScreen
                             self.present(vc, animated: true, completion: nil)
                         })
                     }else {
@@ -157,6 +158,7 @@ class WelcomViewController: UIViewController {
                                     let val = snap.value
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     let vc = storyboard.instantiateViewController(withIdentifier: val as! String) as UIViewController
+                                    vc.modalPresentationStyle = .fullScreen
                                     self.present(vc, animated: true, completion: nil)
                                 })
                                 

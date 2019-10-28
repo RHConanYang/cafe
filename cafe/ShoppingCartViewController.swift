@@ -130,7 +130,7 @@ class ShoppingCartVC: UIViewController, UITableViewDataSource, UITableViewDelega
         //print("Full/All Data : \n\(item)")
         
         cell.setItemAttribute(item)
-        
+        cell.selectionStyle = .none
         // Set redius and bounds
         cell.productImage.layer.cornerRadius = 10
         cell.productImage.clipsToBounds = true
