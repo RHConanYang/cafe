@@ -12,6 +12,7 @@
 		EC0D283A1EC56EA8002DB365 /* ShoppingCartCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC0D28361EC56EA8002DB365 /* ShoppingCartCoreData.xcdatamodeld */; };
 		EC0D283D1EC95266002DB365 /* WalktroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D283C1EC95266002DB365 /* WalktroughContentViewController.swift */; };
 		EC0D283F1EC9581F002DB365 /* WalktroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D283E1EC9581F002DB365 /* WalktroughPageViewController.swift */; };
+		EC5BD17923D069C70069E671 /* cafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BD17823D069C70069E671 /* cafeUITests.swift */; };
 		EC8E3FDF1E8E13360032A404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E3FDE1E8E13360032A404 /* AppDelegate.swift */; };
 		EC8E3FE11E8E13360032A404 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8E3FE01E8E13360032A404 /* ShoppingCartViewController.swift */; };
 		EC8E3FE41E8E13360032A404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8E3FE21E8E13360032A404 /* Main.storyboard */; };
@@ -40,6 +41,16 @@
 		ECFB0BCA1EF25902005A9E15 /* GetOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFB0BC91EF25902005A9E15 /* GetOrderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EC5BD17B23D069C70069E671 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC8E3FD31E8E13360032A404 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC8E3FDA1E8E13360032A404;
+			remoteInfo = cafe;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		24F0A14BFEBB1E5684147C1C /* Pods-cafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cafe/Pods-cafe.debug.xcconfig"; sourceTree = "<group>"; };
 		70E4D6870ABA93A540847698 /* Pods-cafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-cafe/Pods-cafe.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +61,9 @@
 		EC0D28391EC56EA8002DB365 /* ShoppingCartCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingCartCoreData.xcdatamodel; sourceTree = "<group>"; };
 		EC0D283C1EC95266002DB365 /* WalktroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalktroughContentViewController.swift; sourceTree = "<group>"; };
 		EC0D283E1EC9581F002DB365 /* WalktroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalktroughPageViewController.swift; sourceTree = "<group>"; };
+		EC5BD17623D069C70069E671 /* cafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cafeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC5BD17823D069C70069E671 /* cafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cafeUITests.swift; sourceTree = "<group>"; };
+		EC5BD17A23D069C70069E671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8E3FDB1E8E13360032A404 /* cafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8E3FDE1E8E13360032A404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC8E3FE01E8E13360032A404 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EC5BD17323D069C70069E671 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC8E3FD81E8E13360032A404 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -111,6 +132,15 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		EC5BD17723D069C70069E671 /* cafeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC5BD17823D069C70069E671 /* cafeUITests.swift */,
+				EC5BD17A23D069C70069E671 /* Info.plist */,
+			);
+			path = cafeUITests;
+			sourceTree = "<group>";
+		};
 		EC8E3FD21E8E13360032A404 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +148,7 @@
 				EC0D28351EC2AE5A002DB365 /* CoreData */,
 				EC8E3FF01E8E14660032A404 /* Model */,
 				EC8E3FDD1E8E13360032A404 /* Controller */,
+				EC5BD17723D069C70069E671 /* cafeUITests */,
 				EC8E3FDC1E8E13360032A404 /* Products */,
 				ECF4A8F81ED7F41800249CCE /* Frameworks */,
 				82445A3C50452F26921D5FCB /* Pods */,
@@ -128,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				EC8E3FDB1E8E13360032A404 /* cafe.app */,
+				EC5BD17623D069C70069E671 /* cafeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +226,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EC5BD17523D069C70069E671 /* cafeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC5BD17D23D069C70069E671 /* Build configuration list for PBXNativeTarget "cafeUITests" */;
+			buildPhases = (
+				EC5BD17223D069C70069E671 /* Sources */,
+				EC5BD17323D069C70069E671 /* Frameworks */,
+				EC5BD17423D069C70069E671 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC5BD17C23D069C70069E671 /* PBXTargetDependency */,
+			);
+			name = cafeUITests;
+			productName = cafeUITests;
+			productReference = EC5BD17623D069C70069E671 /* cafeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		EC8E3FDA1E8E13360032A404 /* cafe */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC8E3FED1E8E13360032A404 /* Build configuration list for PBXNativeTarget "cafe" */;
@@ -219,10 +269,16 @@
 		EC8E3FD31E8E13360032A404 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Renhen Yang";
 				TargetAttributes = {
+					EC5BD17523D069C70069E671 = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = Q37C4M7VB6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EC8E3FDA1E8E13360032A404;
+					};
 					EC8E3FDA1E8E13360032A404 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Q37C4M7VB6;
@@ -250,11 +306,19 @@
 			projectRoot = "";
 			targets = (
 				EC8E3FDA1E8E13360032A404 /* cafe */,
+				EC5BD17523D069C70069E671 /* cafeUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EC5BD17423D069C70069E671 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC8E3FD91E8E13360032A404 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +378,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EC5BD17223D069C70069E671 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC5BD17923D069C70069E671 /* cafeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC8E3FD71E8E13360032A404 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,6 +420,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EC5BD17C23D069C70069E671 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC8E3FDA1E8E13360032A404 /* cafe */;
+			targetProxy = EC5BD17B23D069C70069E671 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EC8E3FE21E8E13360032A404 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -369,6 +449,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EC5BD17E23D069C70069E671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q37C4M7VB6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = cafeUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RenHan.cafeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = cafe;
+			};
+			name = Debug;
+		};
+		EC5BD17F23D069C70069E671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q37C4M7VB6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = cafeUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RenHan.cafeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = cafe;
+			};
+			name = Release;
+		};
 		EC8E3FEB1E8E13360032A404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -486,6 +611,7 @@
 				DEVELOPMENT_TEAM = Q37C4M7VB6;
 				INFOPLIST_FILE = cafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RenHan.cafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -501,6 +627,7 @@
 				DEVELOPMENT_TEAM = Q37C4M7VB6;
 				INFOPLIST_FILE = cafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RenHan.cafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -511,6 +638,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EC5BD17D23D069C70069E671 /* Build configuration list for PBXNativeTarget "cafeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC5BD17E23D069C70069E671 /* Debug */,
+				EC5BD17F23D069C70069E671 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EC8E3FD61E8E13360032A404 /* Build configuration list for PBXProject "cafe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
