@@ -36,7 +36,7 @@ class ShoppingCartViewCell: UITableViewCell {
         }
         
         set {
-            self.setItemQuantity(quantity)
+            self.setItemQuantity(newValue)
         }
         
     }
